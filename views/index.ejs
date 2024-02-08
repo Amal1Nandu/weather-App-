@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>weather API</title>
+        <!--css link-->
+        <link rel="stylesheet" href="style.css" />
+
+        <!--font link-->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <div class="container">
+            <section class="weather-box1">
+                <div class="search-container">
+                    <form action="/get_weather" method="post">
+                        <input
+                            type="search"
+                            placeholder="city name"
+                            name="city_search"
+                            id="citySearch"
+                        />
+                        <input type="submit" value="search" />
+                    </form>
+                </div>
+
+                <div class="weather-box2">
+                    <% if (locals.temperature){ %>
+                    <h1><%= temperature %> °c</h1>
+                    <% } %> <% if (locals.data){ %>
+                    <h2><%= data.name %></h2>
+                    <% } %> <% if (locals.error){ %>
+                    <p>Error: <%= error %></p>
+                    <% } %>
+                </div>
+
+                <div class="weather-box3-humidity">
+                    <img
+                        src="./svg/humidity-svgrepo-com.svg"
+                        class="box-3-img"
+                        height="100px"
+                        alt="humidity svg"
+                    />
+                    <% if (locals.humidity){ %>
+                    <p>humidity: <%= humidity %> %</p>
+                    <% } %>
+                </div>
+
+                <div class="weather-box3-wind">
+                    <img src="./svg/wind-svgrepo-com.svg" height="100px" alt="wind svg" />
+                    <% if (locals.wind){ %>
+                    <p>wind: <%= wind %> m/s</p>
+                    <% } %>
+                </div>
+            </section>
+            <section class="weather-Imagebox">
+                <% if(locals.weatherImages){ %>
+                <img
+                    src="./images/<%= weatherImages %>"
+                    class="weather-image"
+                    alt="weather-image"
+                />
+                <% } %> <% if (locals.climate){ %>
+                <h2><%= climate %></h2>
+                <% } %>
+            </section>
+        </div>
+    </body>
+</html>
