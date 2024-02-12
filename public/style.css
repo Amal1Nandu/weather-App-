@@ -9,6 +9,10 @@ body {
     font-family: "Open Sans", sans-serif;
 }
 
+.container h1 {
+    font-weight: lighter;
+}
+
 .weather-box1 {
     width: 500px;
     min-height: 350px;
